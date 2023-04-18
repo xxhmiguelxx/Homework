@@ -1,28 +1,18 @@
-import java.awt.*;
+public class Automovil extends Vehiculo{
 
-public class Automovil {
-
-    private String marca;
-    private String submarca;
-    private byte modelo;
-    private Color color;
-
-    //CONSTRUCTOR POR DEFECTO
+    protected String marca;
+    protected String modelo;
+    protected int año;
 
     public Automovil() {
     }
 
-    //CONSTRUCTOR
-
-
-    public Automovil(String marca, String submarca, byte modelo, Color color) {
+    public Automovil(int numRuedas, String combustible, String motor, int numPuertas, String marca, String modelo, int año) {
+        super(numRuedas, combustible, motor, numPuertas);
         this.marca = marca;
-        this.submarca = submarca;
         this.modelo = modelo;
-        this.color = color;
+        this.año = año;
     }
-
-
 
     public String getMarca() {
         return marca;
@@ -32,38 +22,42 @@ public class Automovil {
         this.marca = marca;
     }
 
-    public String getSubmarca() {
-        return submarca;
-    }
-
-    public void setSubmarca(String submarca) {
-        this.submarca = submarca;
-    }
-
-    public byte getModelo() {
+    public String getModelo() {
         return modelo;
     }
 
-    public void setModelo(byte modelo) {
+    public void setModelo(String modelo) {
         this.modelo = modelo;
     }
 
-    public Color getColor() {
-        return color;
+    public int getAño() {
+        return año;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
+    public void setAño(int año) {
+        this.año = año;
     }
 
     @Override
     public String toString() {
         return "Automovil{" +
                 "marca='" + marca + '\'' +
-                ", submarca='" + submarca + '\'' +
-                ", modelo=" + modelo +
-                ", color=" + color +
+                ", modelo='" + modelo + '\'' +
+                ", año=" + año +
+                ", numRuedas=" + numRuedas +
+                ", combustible='" + combustible + '\'' +
+                ", motor='" + motor + '\'' +
+                ", numPuertas=" + numPuertas +
                 '}';
     }
-}
 
+    @Override
+    public void encender() {
+        System.out.println("Encendiendo el coche de marca "+ marca);
+    }
+
+    @Override
+    public void apagar() {
+        System.out.println("Apagando el coche de marca "+ marca);
+    }
+}
