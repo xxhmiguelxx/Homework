@@ -1,23 +1,65 @@
-import java.sql.SQLOutput;
+import java.util.ArrayList;
 
 public class Main {
 
     public static void main(String[] args) {
+        Caja<String> miCaja=new Caja<>(new String[10]);
 
-        Vehiculo vehiculo = new Vehiculo(4,"Magna","X",4);
-        System.out.println(vehiculo);
+        miCaja.add(0,"hola");
+        miCaja.add(1,"adios");
+        miCaja.add(2,"hi");
 
-        Automovil auto = new Automovil(4,"Premium","Ford 3C Turbo",4,"Ford","Focus",2023);
-        System.out.println(auto);
+        System.out.println(miCaja);
 
-        Taxi taxi = new Taxi(4,"Magna","MR18DE",4,
-                "Nissan","Tiida",2012,
-                "De sitio",8.74,"Andres Lopez");
-        System.out.println(taxi);
+        String temp = miCaja.get(0);
+
+        System.out.println("--------------");
+
+        CajaSinGenericos cajaSin=new CajaSinGenericos(new Object[10]);
+        cajaSin.add(0,"Hola");
+        cajaSin.add(1,"Adios");
+        cajaSin.add(2,"Hi");
+
+        System.out.println(cajaSin);
+
+        String temp2 = (String)cajaSin.get(0);
+
+        System.out.println("-----COMIDA-----");
+
+        Caja<Comida> cajaComida = new Caja<>(new Comida[10]);
+        cajaComida.add(0, new Comida("Yogurth",true));
+        System.out.println(cajaComida.get(0));
+
+        System.out.println("----------");
+        ArrayList<Comida> comidas = new ArrayList<>();
+        comidas.add(new Comida("Zanahoria",false));
+        comidas.add(new Comida("Zanahoria",false));
+        comidas.add(new Comida("Zanahoria",false));
+        comidas.add(new Comida("Zanahoria",false));
+        comidas.add(new Comida("Zanahoria",false));
+        comidas.add(new Comida("Zanahoria",false));
+        comidas.add(new Comida("Manzana",false));
+
+        System.out.println(comidas.size());
+        System.out.println(comidas.get(6));
+
+        ArrayList<Comida> comidas2 = new ArrayList<>();
+        comidas2.add(new Comida("Zanahoria", false));
+        comidas2.add(new Comida("Yogurth", true));
+        comidas2.add(new Comida("Danonino", true));
+        comidas2.add(new Comida("Manzana", false));
+        comidas2.add(new Comida("Bistec", false));
+
+        System.out.println(comidas2.get(3));
+        comidas2.set(3, new Comida("Fresa",false));
+        System.out.println(comidas2.get(3));
 
 
-        vehiculo.encender();
-        auto.encender();
-        taxi.encender();
+        comidas2.add(3,new Comida("Naranja",false));
+        System.out.println("----FINAL----");
+        for(Comida comida : comidas2){
+            System.out.println(comida);
+        }
+
     }
 }
